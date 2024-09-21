@@ -14,7 +14,7 @@ export default defineNuxtConfig({
   compatibilityDate: '2024-09-21',
   ssr: false,
   vite: {
-    plugins: [Components({ resolver: [NaiveUiResolver()] })],
+    plugins: [Components({ resolvers: [NaiveUiResolver()] })],
   },
   modules: [
     '@nuxt/eslint',

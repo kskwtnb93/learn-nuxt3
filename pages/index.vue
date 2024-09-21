@@ -1,5 +1,5 @@
 <template>
-  <div class="min-h-screen justify-center items-center flex">
+  <div class="w-full min-h-screen justify-center items-center flex">
     <NButton>
       Hello world!
     </NButton>
