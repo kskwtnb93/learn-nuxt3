@@ -1,8 +1,16 @@
 <template>
   <div
     v-if="users"
-    class="px-[40px]"
+    class="px-[40px] py-[32px] flex flex-col gap-[32px]"
   >
+    <div class="flex flex-row items-center justify-between">
+      <span class="text-[24px] font-bold">Users</span>
+
+      <NButton @click="router.push('/users/new')">
+        <span class="text-[14px]">新規登録</span>
+      </NButton>
+    </div>
+
     <NDataTable
       remote
       :data="users"
@@ -12,8 +20,10 @@
 </template>
 
 <script setup lang="ts">
-import { NDataTable, type DataTableColumns } from 'naive-ui'
+import type { DataTableColumns } from 'naive-ui'
 import type { User } from '~/types/user'
+
+const router = useRouter()
 
 const { data: users } = useFetch<User[]>('https://jsonplaceholder.typicode.com/users')
 const columns = computed<DataTableColumns<User>>(() => [
