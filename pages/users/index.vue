@@ -25,7 +25,9 @@ import type { User } from '~/types/user'
 
 const router = useRouter()
 
-const { data: users } = useFetch<User[]>('https://jsonplaceholder.typicode.com/users')
+const api = useApi()
+const { data: users } = useAsyncData<User[]>(() => api('/users'))
+
 const columns = computed<DataTableColumns<User>>(() => [
   {
     key: 'id',
