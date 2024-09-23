@@ -1,5 +1,8 @@
 <template>
-  <div v-if="users">
+  <div
+    v-if="users"
+    class="px-[40px]"
+  >
     <NDataTable
       remote
       :data="users"
