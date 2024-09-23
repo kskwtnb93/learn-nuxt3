@@ -57,15 +57,14 @@ const menuOptions: MenuOption[] = [
   },
 ]
 
-const router = useRouter()
 const authStore = useAuthStore()
 
 const login = () => {
-  router.push('/login')
+  navigateTo('/login')
 }
 
 const logout = () => {
   authStore.clearUser()
-  router.push('/')
+  navigateTo('/login')
 }
 </script>
