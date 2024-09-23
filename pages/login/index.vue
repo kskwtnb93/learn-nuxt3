@@ -35,6 +35,7 @@ import type { User } from '~/types/user'
 
 definePageMeta({
   layout: 'static',
+  requiresAuth: false,
 })
 
 interface FormValue {

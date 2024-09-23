@@ -23,6 +23,10 @@
 import type { DataTableColumns } from 'naive-ui'
 import type { User } from '~/types/user'
 
+definePageMeta({
+  requiresAuth: true,
+})
+
 const router = useRouter()
 
 const api = useApi()

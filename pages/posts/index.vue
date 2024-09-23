@@ -14,6 +14,10 @@
 import type { DataTableColumns } from 'naive-ui'
 import type { Post } from '~/types/post'
 
+definePageMeta({
+  requiresAuth: true,
+})
+
 const api = useApi()
 const { data: posts } = useAsyncData<Post[]>(() => api('/posts'))
 
