@@ -61,6 +61,7 @@ const rules: FormRules = {
 
 const api = useApi()
 const authStore = useAuthStore()
+const router = useRouter()
 
 const login = async () => {
   try {
@@ -68,6 +69,7 @@ const login = async () => {
     const res = await api<User>(`/users/${formValue.value.id}`)
     authStore.setUser(res)
     console.log(res)
+    router.push('/')
   }
   catch (error) {
     console.log(error)

@@ -7,5 +7,6 @@
 </template>
 
 <script setup lang="ts">
-import { NButton } from 'naive-ui'
+const router = useRouter()
+onMounted(() => router.push('/users'))
 </script>

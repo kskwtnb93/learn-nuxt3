@@ -13,11 +13,23 @@
     <NLayout class="min-h-screen">
       <NLayoutHeader>
         <div class="py-[24px] px-[40px] flex flex-row items-center justify-end">
-          <div class="flex flex-row items-center gap-[12px]">
-            <span>hoge</span>
+          <div
+            v-if="authStore.user"
+            class="flex flex-row items-center gap-[12px]"
+          >
+            <span class="text-[14px]">{{ authStore.user.name }}</span>
 
-            <NButton>
-              <span>ログアウト</span>
+            <NButton @click="logout">
+              <span class="text-[14px]">ログアウト</span>
+            </NButton>
+          </div>
+
+          <div
+            v-else
+            class="flex flex-row items-center gap-[12px]"
+          >
+            <NButton @click="login">
+              <span class="text-[14px]">ログイン</span>
             </NButton>
           </div>
         </div>
@@ -44,4 +56,16 @@ const menuOptions: MenuOption[] = [
     label: () => h(RouterLink, { to: '/posts' }, { default: () => 'Posts' }),
   },
 ]
+
+const router = useRouter()
+const authStore = useAuthStore()
+
+const login = () => {
+  router.push('/login')
+}
+
+const logout = () => {
+  authStore.clearUser()
+  router.push('/')
+}
 </script>
