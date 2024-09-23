@@ -12,8 +12,10 @@
     "format": "eslint . --fix"
   },
   "dependencies": {
+    "@pinia/nuxt": "^0.5.4",
     "nuxt": "^3.13.0",
-    "vue": "latest",
+    "pinia": "^2.2.2",
+    "vue": "^3.5.8",
     "vue-router": "latest"
   },
   "devDependencies": {

@@ -60,11 +60,13 @@ const rules: FormRules = {
 }
 
 const api = useApi()
+const authStore = useAuthStore()
 
 const login = async () => {
   try {
     await formRef.value?.validate()
     const res = await api<User>(`/users/${formValue.value.id}`)
+    authStore.setUser(res)
     console.log(res)
   }
   catch (error) {
