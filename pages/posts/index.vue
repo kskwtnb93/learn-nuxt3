@@ -1,11 +1,12 @@
 <template>
   <div class="px-[40px] py-[32px] flex flex-col gap-[32px]">
     <span class="text-[24px] font-bold">Posts</span>
-    <NDataTable
+
+    <AtomsDataTable
       v-if="posts"
-      remote
       :data="posts"
       :columns="columns"
+      @select="router.push(`/posts/${$event.id}`)"
     />
   </div>
 </template>
@@ -18,6 +19,7 @@ definePageMeta({
   requiresAuth: true,
 })
 
+const router = useRouter()
 const api = useApi()
 const { data: posts } = useAsyncData<Post[]>(() => api('/posts'))
 
