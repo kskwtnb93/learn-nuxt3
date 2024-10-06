@@ -15,12 +15,14 @@
       remote
       :data="users"
       :columns="columns"
+      :row-props="rowProps"
     />
   </div>
 </template>
 
 <script setup lang="ts">
 import type { DataTableColumns } from 'naive-ui'
+import type { HTMLAttributes } from 'vue'
 import type { User } from '~/types/user'
 
 definePageMeta({
@@ -31,6 +33,13 @@ const router = useRouter()
 
 const api = useApi()
 const { data: users } = useAsyncData<User[]>(() => api('/users'))
+
+const rowProps: (row: User) => HTMLAttributes = row => ({
+  style: {
+    cursor: 'pointer',
+  },
+  onClick: () => router.push(`/users/${row.id}`),
+})
 
 const columns = computed<DataTableColumns<User>>(() => [
   {
